@@ -1,25 +1,39 @@
 <p class="mt-5 fs-1 fw-bold font-monospace text-center">Login</p>
 
 <div class="container min-vh-100 d-flex justify-content-center align-items-top">
-  <form class="form">
-    <div class="form-floating mb-3 mt-3 container">
+  <form class="form" #form="ngForm" (ngSubmit)="submit()">
+    <div class="form-group form-floating mb-3 mt-3 container">
       <input
+        required
+        ngModel
+        #email="ngModel"
+        name="email"
         type="email"
         class="form-control"
         id="floatingInput"
         placeholder="name@example.com"
       />
+      <div class="alert alert-danger" *ngIf="email.touched">
+        email must be entered
+      </div>
       <label for="floatingInput">Email address</label>
     </div>
 
     <div class="form-floating mb-3 container">
       <input
+        required
+        ngModel
+        #password="ngModel"
+        name="password"
         type="password"
         class="form-control"
         id="floatingPassword"
         placeholder="Password"
       />
       <label for="floatingPassword">Password</label>
+      <div class="alert alert-danger" *ngIf="password.touched">
+        password must be entered
+      </div>
     </div>
     <div class="mb-3 form-check container">
       <input
